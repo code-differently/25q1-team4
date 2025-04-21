@@ -22,7 +22,7 @@ public class BoardTest {
         assertEquals("2025-04-21", result);
     }
 
-    @Test 
+    @Test //
     public void getBoardName() {
         Board board =  new Board();
         board.setBoardEditDate("FrontEndBoard");
@@ -31,7 +31,7 @@ public class BoardTest {
         assertEquals("FrontEndBoard", name);
     }
 
-    @Test 
+    @Test //
     public void getBoardDescription() {
         Board board = new Board();
         board.setBoardDescription(
@@ -55,6 +55,7 @@ public class BoardTest {
         assertEquals(new ArrayList<>(), result);
     }
     
+
     
     
 }

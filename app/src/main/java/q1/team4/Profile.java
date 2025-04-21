@@ -6,7 +6,6 @@ import java.util.UUID;
 public class Profile {
     private final String id;
     private final String userName;
-UserFaceSettings
     private final List<Board> boards;
     private final Boolean isActive;
     /**
@@ -35,7 +34,7 @@ UserFaceSettings
     public String getUserName() {
         return this.userName;
     }
-UserFaceSettings
+
     public Boolean getIsActive() {
         return isActive;
     }
@@ -54,6 +53,6 @@ UserFaceSettings
      * @return A ArrayList of all od the Boards that have this Picture
      */
     public List<String> getBoardIds() {
-        return new ArrayList<>(boardIds);
+        return new ArrayList<>();
     }
 }
