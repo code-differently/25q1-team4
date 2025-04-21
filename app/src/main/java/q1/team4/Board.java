@@ -1,10 +1,7 @@
 package q1.team4;
 
-// Removed unused static import
-
 import java.util.ArrayList;
 import java.util.UUID;
-
 
 public class Board {
     private String boardUploadDate;
@@ -15,44 +12,38 @@ public class Board {
     private String boardId;
     private PrivacyLevel privacyLevel;
 
-    Board(String boardName, String boardDescription, String boardId, ArrayList<Object> arrayList, String uploadDate, String editDate) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    void setBoardDescription(String description) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     public enum PrivacyLevel {
         PUBLIC,
         PRIVACY,
     }
 
     public Board() {
-        this.boardUploadDate = boardUploadDate;
-        this.boardEditDate = boardEditDate;
-        this.boardName = boardName;
-        this.boardTagList = boardTagList;
-        this.boardDescription = boardDescription;
         this.boardId = UUID.randomUUID().toString();
-        
-
+        this.boardTagList = new ArrayList<>();
     }
 
-    // Getter and Setter //
+    public Board(String boardName, String boardDescription, String boardId, ArrayList<String> tagList, String uploadDate, String editDate) {
+        this.boardName = boardName;
+        this.boardDescription = boardDescription;
+        this.boardId = boardId;
+        this.boardTagList = tagList;
+        this.boardUploadDate = uploadDate;
+        this.boardEditDate = editDate;
+    }
 
     public String getBoardUploadDate() {
         return boardUploadDate;
     }
+
     public void setBoardUploadDate(String boardUploadDate) {
         this.boardUploadDate = boardUploadDate;
     }
 
-    public String getBoardEditDate() { 
+    public String getBoardEditDate() {
         return boardEditDate;
     }
 
-    public void setBoardEditDate( String boardEditDate) {
+    public void setBoardEditDate(String boardEditDate) {
         this.boardEditDate = boardEditDate;
     }
 
@@ -60,29 +51,31 @@ public class Board {
         return boardName;
     }
 
-    public void setBoardName() {
+    public void setBoardName(String boardName) {
         this.boardName = boardName;
     }
 
     public ArrayList<String> getBoardTagList() {
         return boardTagList;
     }
+
     public String getBoardDescription() {
         return boardDescription;
     }
 
-    public String getBoardId(String boardId) {
-        return boardId;
+    public void setBoardDescription(String boardDescription) {
+        this.boardDescription = boardDescription;
     }
 
-// Removed invalid test method from the main class
+    public String getBoardId() {
+        return boardId;
+    }
 
     public void setPrivacyLevel(PrivacyLevel privacyLevel) {
         this.privacyLevel = privacyLevel;
     }
 
-   
-
-   
-    //End of Code//
+    public PrivacyLevel getPrivacyLevel() {
+        return this.privacyLevel;
+    }
 }

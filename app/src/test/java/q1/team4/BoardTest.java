@@ -1,61 +1,57 @@
 package q1.team4;
+
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class BoardTest {
-    @Test
-    public void getBoardUploadDate() {
-        Board board = new Board("BoardName", "BoardDescription", "BoardId", new ArrayList<>(), "UploadDate", "EditDate");
-        board.setBoardUploadDate("2025-04-21");
 
-        String result = board.getBoardUploadDate();
-        assertEquals("2025-04-21", result);
+    @Test
+    public void testGetBoardUploadDate() {
+        ArrayList<String> tags = new ArrayList<>();
+        Board board = new Board("BoardName", "BoardDescription", "BoardId", tags, "2025-04-21", "EditDate");
+        assertEquals("2025-04-21", board.getBoardUploadDate());
     }
 
     @Test 
-    public void getBoardEditDate() {
-        Board board = new Board("BoardName", "BoardDescription", "BoardId", new ArrayList<>(), "UploadDate", "EditDate");
-        board.setBoardEditDate("2025-04-21");
-        String result = board.getBoardEditDate();
-        assertEquals("2025-04-21", result);
-    }
-
-    @Test //
-    public void getBoardName() {
-        Board board =  new Board();
-        board.setBoardEditDate("FrontEndBoard");
-        String name = board.getBoardName();
-
-        assertEquals("FrontEndBoard", name);
-    }
-
-    @Test //
-    public void getBoardDescription() {
-        Board board = new Board();
-        board.setBoardDescription(
-            "Description");
-        String result = board.getBoardDescription();
-        Object expected = "Description";
-        assertEquals(expected, result);
-    }
-
-    @Test 
-    public void getBoardId() {
-        Board board = new Board();
-        String result = board.getBoardId("42");
-        assertEquals(42, result);
+    public void testGetBoardEditDate() {
+        ArrayList<String> tags = new ArrayList<>();
+        Board board = new Board("BoardName", "BoardDescription", "BoardId", tags, "UploadDate", "2025-04-21");
+        assertEquals("2025-04-21", board.getBoardEditDate());
     }
 
     @Test
-    public void getBoardTagList() {
+    public void testSetAndGetBoardName() {
         Board board = new Board();
-        ArrayList<String> result = board.getBoardTagList();
-        assertEquals(new ArrayList<>(), result);
+        board.setBoardName("FrontEndBoard");
+        assertEquals("FrontEndBoard", board.getBoardName());
     }
-    
 
-    
-    
+    @Test
+    public void testSetAndGetBoardDescription() {
+        Board board = new Board();
+        board.setBoardDescription("Description");
+        assertEquals("Description", board.getBoardDescription());
+    }
+
+    @Test 
+    public void testGetBoardId() {
+        ArrayList<String> tags = new ArrayList<>();
+        Board board = new Board("BoardName", "BoardDescription", "42", tags, "UploadDate", "EditDate");
+        assertEquals("42", board.getBoardId());
+    }
+
+    @Test
+    public void testGetBoardTagList() {
+        Board board = new Board();
+        assertEquals(new ArrayList<>(), board.getBoardTagList());
+    }
+
+    @Test
+    public void testSetAndGetPrivacyLevel() {
+        Board board = new Board();
+        board.setPrivacyLevel(Board.PrivacyLevel.PRIVACY);
+        assertEquals(Board.PrivacyLevel.PRIVACY, board.getPrivacyLevel());
+    }
 }
