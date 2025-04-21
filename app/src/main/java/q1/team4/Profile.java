@@ -34,7 +34,7 @@ public class Profile {
     public String getUserName() {
         return this.userName;
     }
-    
+
     public Boolean getIsActive() {
         return isActive;
     }
