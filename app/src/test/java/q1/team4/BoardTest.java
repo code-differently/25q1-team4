@@ -6,13 +6,16 @@ import org.junit.jupiter.api.Test;
 
 public class BoardTest {
     @Test
-    public void getBoardUploadDate() {
-        Board board = new Board("BoardName", "BoardDescription", "BoardId", new ArrayList<>(), "UploadDate", "EditDate");
-        board.setBoardUploadDate("2025-04-21");
-
-        String result = board.getBoardUploadDate();
-        assertEquals("2025-04-21", result);
-    }
+    void boardUpload() {
+        // Arrange
+        String name = "Artboard";
+        String description = "Descibes The Art.";
+        String id = "45";
+        ArrayList<String> tags = new ArrayList<String>();
+        tags.add("Art");
+        tags.add("Gesture");
+        String uploadDate = "2025-04-21";
+        String editDate = "2025-04-22";
 
     @Test 
     public void getBoardEditDate() {
