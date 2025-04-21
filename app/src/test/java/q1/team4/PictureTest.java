@@ -8,11 +8,12 @@ public class PictureTest {
     private Picture picture1;
     private final String PICTURE_ID = "test-picture-id";
     private final String PICTURE_TITLE = "Test Picture";
+    private final String PICTURE_DATE_ADDED = "2025-01-01";
     private final String[] PICTURE_TAGS = {"traditional", "digital", "anime"};
 
     @BeforeEach
     public void setUp() {
-        picture1 = new Picture(PICTURE_ID, PICTURE_TITLE, PICTURE_TAGS);
+        picture1 = new Picture(PICTURE_ID, PICTURE_TITLE, PICTURE_DATE_ADDED, PICTURE_TAGS);
     }
 
     @Test
