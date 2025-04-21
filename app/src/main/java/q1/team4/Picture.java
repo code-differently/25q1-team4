@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import q1.team4.exceptions.DuplicateTagException;
+import q1.team4.exceptions.TagNotFoundException;
+
 public class Picture {
     private final String ID;
     private String title;
@@ -31,6 +34,8 @@ public class Picture {
     public void addTag(String tag) {
         if (!tags.contains(tag)) {
             tags.add(tag);
+        } else {
+            throw new DuplicateTagException("Tag: " + tag + " already exists");
         }
     }
 
@@ -38,6 +43,9 @@ public class Picture {
      * Removes tag from the Picture.
      */
     public void removeTag(String tag) {
+        if (!tags.contains(tag)) {
+            throw new TagNotFoundException("Tag: " + tag + " does not exist");
+        }
         tags.remove(tag);
     }
 

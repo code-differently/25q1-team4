@@ -2,6 +2,7 @@ package q1.team4;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -9,6 +10,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import q1.team4.exceptions.DuplicateTagException;
+import q1.team4.exceptions.TagNotFoundException;
 
 public class PictureTest {
     private Picture picture1;
@@ -57,5 +61,23 @@ public class PictureTest {
     @Test
     public void testGetTags() {
         assertEquals(tags, picture1.getTags());
+    }
+
+    @Test
+    public void testTagNotFoundException() {
+        Exception exception = assertThrows(TagNotFoundException.class, () -> {
+            picture1.removeTag("void");
+        });
+
+        assertEquals("Tag: void does not exist", exception.getMessage());
+    }
+
+    @Test
+    public void testDuplicateTagException() {
+        Exception exception = assertThrows(DuplicateTagException.class, () -> {
+            picture1.addTag("anime");
+        });
+
+        assertEquals("Tag: anime already exists", exception.getMessage());
     }
 }
