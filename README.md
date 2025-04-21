@@ -16,4 +16,16 @@
 
 ## -Simulate realistic use cases without relying on a graphical interface
 
-## Created by DEMO
+## -Created by DEMO
+
+
+
+## How We Would Improve This Solution
+
+## With more time or in a future version, we would aim to:
+
+## Build a user interface (CLI, web, or mobile) to make the tool more accessible.
+
+## Implement data export features to share or archive collections.
+
+## Expand functionality with sorting options.       
