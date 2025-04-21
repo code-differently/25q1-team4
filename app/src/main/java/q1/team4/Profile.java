@@ -20,6 +20,8 @@ public class Profile {
 
     /**
      * Gets Profile id.
+     * 
+     * @return The Profile ID
      */
     public String getId() {
         return this.id;
@@ -27,6 +29,8 @@ public class Profile {
 
     /**
      * Gets Profile userName.
+     * 
+     * @return The Profile userName
      */
     public String getUserName() {
         return this.userName;
@@ -34,6 +38,8 @@ public class Profile {
 
     /**
      * Gets all of the Profiles boardIds.
+     * 
+     * @return A ArrayList of all od the Boards that have this Picture
      */
     public List<String> getBoardIds() {
         return new ArrayList<>(boardIds);
