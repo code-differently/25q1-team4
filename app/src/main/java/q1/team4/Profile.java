@@ -34,7 +34,6 @@ public class Profile {
     public String getUserName() {
         return this.userName;
     }
-
     public Boolean getIsActive() {
         return isActive;
     }
@@ -55,4 +54,8 @@ public class Profile {
     public List<String> getBoardIds() {
         return new ArrayList<>();
     }
+    public Boolean getIsActive() {
+        return isActive;
+    }
+main
 }

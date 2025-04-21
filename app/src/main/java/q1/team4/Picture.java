@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import q1.team4.exceptions.DuplicateTagException;
+import q1.team4.exceptions.TagNotFoundException;
+
 public class Picture {
     private final String ID;
-    private final String TITLE;
+    private String title;
     private final String DATE_ADDED;
-    private final String[] TAGS;
-    private final List<String> BOARD_IDS;
+    private List<String> tags;
 
     /**
      * Creates a new Picture
@@ -19,33 +21,32 @@ public class Picture {
      * @param DATE_ADDED Date when the Picture was added.
      * @param TAGS Array of Strings that are tags for the Picture.
      */
-    public Picture(String ID, String TITLE, String DATE_ADDED, String[] TAGS) {
+    public Picture(String title, String DATE_ADDED, List<String> tags) {
         this.ID = UUID.randomUUID().toString();
-        this.TITLE = TITLE;
+        this.title = title;
         this.DATE_ADDED = DATE_ADDED;
-        this.TAGS = TAGS;
-        this.BOARD_IDS = new ArrayList<>();
+        this.tags = tags;
     }
 
     /**
-     * Adds this Picture tot he board.
-     * 
-     * If the Picture is already on the board do nothing.
-     * @param boardId
+     * Adds a new tag to the Picture.
      */
-    public void addToBoard(String boardId) {
-        if (!BOARD_IDS.contains(boardId)) {
-            BOARD_IDS.add(boardId);
+    public void addTag(String tag) {
+        if (!tags.contains(tag)) {
+            tags.add(tag);
+        } else {
+            throw new DuplicateTagException("Tag: " + tag + " already exists");
         }
     }
 
     /**
-     * Removes Picture from the board
-     * 
-     * If the Picture isn't on the Board do nothing.
+     * Removes tag from the Picture.
      */
-    public void removeFromBoard(String boardId) {
-        BOARD_IDS.remove(boardId);
+    public void removeTag(String tag) {
+        if (!tags.contains(tag)) {
+            throw new TagNotFoundException("Tag: " + tag + " does not exist");
+        }
+        tags.remove(tag);
     }
 
     /**
@@ -62,7 +63,7 @@ public class Picture {
      * @return The Picture's Title
      */
     public String getTitle() {
-        return this.TITLE;
+        return this.title;
     }
 
     /**
@@ -79,7 +80,16 @@ public class Picture {
      * 
      * @return A copy of the Array of the Picture's tags
      */
-    public String[] getTags() {
-        return this.TAGS.clone();
+    public List<String> getTags() {
+        return new ArrayList<>(tags);
+    }
+
+    /**
+     * Sets the Pictures new Title.
+     * 
+     * @param String representing new Title.
+     */
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
