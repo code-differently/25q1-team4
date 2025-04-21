@@ -22,10 +22,10 @@
 
 ## How We Would Improve This Solution
 
-## With more time or in a future version, we would aim to:
+## -With more time or in a future version, we would aim to:
 
-## Build a user interface (CLI, web, or mobile) to make the tool more accessible.
+## -Build a user interface (CLI, web, or mobile) to make the tool more accessible.
 
-## Implement data export features to share or archive collections.
+## -Implement data export features to share or archive collections.
 
-## Expand functionality with sorting options.       
+## -Expand functionality with sorting options.       
