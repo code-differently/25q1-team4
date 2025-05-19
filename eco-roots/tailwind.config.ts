@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+
 
 const config = {
   darkMode: ["class"],
@@ -76,6 +76,6 @@ const config = {
     },
   },
   plugins: ["tailwindcss-animate"],
-} satisfies Config
+} 
 
 export default config
