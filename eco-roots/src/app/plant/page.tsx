@@ -38,27 +38,6 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       <main className="flex-1 overflow-auto">
         {children}
       </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
       {/* Footer */}
       <footer className="border-t bg-white mt-auto">
         <div className="container mx-auto px-4 flex flex-col gap-4 py-10 md:flex-row md:items-center md:justify-between md:py-12">
