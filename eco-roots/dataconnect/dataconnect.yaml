@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "eco-roots"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "eco-roots-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]
