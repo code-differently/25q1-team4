@@ -38,14 +38,18 @@ export default function Page(): JSX.Element {
             </Link>
           </nav>
           <div className="flex items-center justify-evenly gap-10">
+            <Link href="/login">
             <button className="hidden md:flex h-9 px-4 py-2 text-sm font-medium border rounded-md items-center justify-center transition-colors hover:bg-gray-100">
               <User className="mr-2 h-4 w-4" />
               Profile
             </button>
+            </Link>
+            <Link href="/plant-tree">
             <button className="h-9 px-4 py-2 text-sm font-medium rounded-md bg-green-600 text-white hover:bg-green-700 transition-colors flex items-center justify-center">
               <Plus className="mr-2 h-4 w-4" />
               Plant a Tree
             </button>
+            </Link>
           </div>
         </div>
       </header>
