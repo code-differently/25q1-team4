@@ -1,13 +1,13 @@
-import type React from "react"
+import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import "./globals.css"
-import Header from "@/components/header"
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "TreeMapper - Track Your Impact",
+  title: "BranchOut - Track Your Impact",
   description: "Map, track, and share your contribution to a healthier planet.",
 }
 
@@ -19,8 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <main>{children}</main>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-1 overflow-auto">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   )
