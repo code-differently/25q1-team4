@@ -25,9 +25,6 @@ export default function Navbar() {
             About
           </Link>
           <Link href="#" className="text-sm font-medium hover:text-green-600 transition-colors">
-            Learn More
-          </Link>
-          <Link href="/tree-finder" className="text-sm font-medium hover:text-green-600 transition-colors">
             Map
           </Link>
         </nav>
