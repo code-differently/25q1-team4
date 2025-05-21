@@ -65,7 +65,9 @@ export default function Home() {
               <User className="mr-2 h-4 w-4" />
               Sign In
             </button>
+
             </Link>
+
             <Link href="/plant-tree">
             <button className="h-9 px-4 py-2 text-sm font-medium rounded-md bg-green-600 text-white hover:bg-green-700 transition-colors flex items-center justify-center">
               <Plus className="mr-2 h-4 w-4" />
