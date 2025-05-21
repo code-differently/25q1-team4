@@ -45,16 +45,16 @@ export default function Home() {
             <Link href="#" className="text-sm font-medium hover:text-green-600 transition-colors">
               Donate
             </Link>
-            <Link href="#" className="text-sm font-medium hover:text-green-600 transition-colors">
+            <Link href="/about" className="text-sm font-medium hover:text-green-600 transition-colors">
               About
             </Link>
-            <Link href="#" className="text-sm font-medium hover:text-green-600 transition-colors">
+            <Link href="" className="text-sm font-medium hover:text-green-600 transition-colors">
               Learn More
             </Link>
-            <Link href="#" className="text-sm font-medium hover:text-green-600 transition-colors">
+            <Link href="tree-finder" className="text-sm font-medium hover:text-green-600 transition-colors">
               Map
             </Link>
-            <Link href="#" className="text-sm font-medium hover:text-green-600 transition-colors">
+            <Link href="/profile" className="text-sm font-medium hover:text-green-600 transition-colors">
               Profile
             </Link>
           </nav>
@@ -63,10 +63,12 @@ export default function Home() {
               <User className="mr-2 h-4 w-4" />
               Sign In
             </button>
+            <Link href="/plant-tree">
             <button className="h-9 px-4 py-2 text-sm font-medium rounded-md bg-green-600 text-white hover:bg-green-700 transition-colors flex items-center justify-center">
               <Plus className="mr-2 h-4 w-4" />
               Plant a Tree
             </button>
+            </Link>
           </div>
         </div>
       </header>
