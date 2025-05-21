@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { getFirestore, collection, addDoc, query, orderBy, serverTimestamp } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { app } from "../../firebase/firebase"; // your firebase initialization
+import { app } from "../firebase/firebase"; // your firebase initialization
 
 const db = getFirestore(app);
 
