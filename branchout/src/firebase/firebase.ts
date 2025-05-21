@@ -4,16 +4,17 @@ import { getAuth, Auth } from "firebase/auth";
 import { getFirestore, Firestore } from "firebase/firestore";
 import { getAnalytics, Analytics } from "firebase/analytics";
 
-// Your Firebase configuration
+// Your Fbeirebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAnootJBNjQqs5q42BEA1UvR5FF4gBCmkc",
-  authDomain: "ecoroots-57b39.firebaseapp.com",
-  projectId: "ecoroots-57b39",
-  storageBucket: "ecoroots-57b39.firebasestorage.app",
-  messagingSenderId: "422531342395",
-  appId: "1:422531342395:web:3058b751634ee7344abc1e",
-  measurementId: "G-L4412HXD5C",
+ apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
+
 
 // Initialize Firebase app once
 const app: FirebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
