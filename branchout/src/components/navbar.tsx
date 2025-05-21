@@ -27,9 +27,6 @@ export default function Navbar() {
           <Link href="/tree-finder" className="text-sm font-medium hover:text-green-600 transition-colors">
             Map
           </Link>
-          <Link href="/profile" className="text-sm font-medium hover:text-green-600 transition-colors">
-            Profile
-          </Link>
         </nav>
         <div className="flex items-center justify-evenly gap-10">
           <Link href="/profile">
