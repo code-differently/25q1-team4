@@ -1,14 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
-import { MapPin, User, Plus, Heart } from "lucide-react"
+import { MapPin, Heart } from "lucide-react"
 import { GiTreeBranch } from "react-icons/gi"
 
 export default function Home() {
   const [hoveredTree, setHoveredTree] = useState<number | null>(null)
-  const [activeTab, setActiveTab] = useState("map")
-  const [detailsTab, setDetailsTab] = useState("details")
 
   // Sample tree data
   const trees = [

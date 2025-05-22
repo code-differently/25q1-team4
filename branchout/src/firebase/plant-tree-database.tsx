@@ -17,10 +17,10 @@ const ALLOWED_TREE_TYPES = [
 ];
 
 //allowed city locations
-const ALLOWED_CITIES = [
-  "Riverfront", "Brandywine Park", "City Center", "Mountain View",
-   "Lakeside", "Forest Edge"
-  ];
+// const ALLOWED_CITIES = [
+//   "Riverfront", "Brandywine Park", "City Center", "Mountain View",
+//    "Lakeside", "Forest Edge"
+//   ];
 
 interface TreeInput {
   userId: string;

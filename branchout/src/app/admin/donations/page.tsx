@@ -1,10 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { createClient } from "@supabase/supabase-js"
+import { collection, getDocs, query, orderBy } from "firebase/firestore"
+import { db } from "@/src/firebase/firebase"
 
 interface Donation {
-  id: number
+  id: string
   amount: number
   name: string
   email: string
@@ -25,17 +26,32 @@ export default function DonationsPage() {
   useEffect(() => {
     async function fetchDonations() {
       try {
-        // Initialize Supabase client (client-side)
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ""
-        const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
-        const supabase = createClient(supabaseUrl, supabaseAnonKey)
+        if (!db) {
+          throw new Error("Firestore is not initialized. Check your environment variables.")
+        }
 
-        // Fetch donations
-        const { data, error } = await supabase.from("donations").select("*").order("created_at", { ascending: false })
+        const q = query(collection(db, "donations"), orderBy("created_at", "desc"))
+        const querySnapshot = await getDocs(q)
 
-        if (error) throw error
+        const donationsData: Donation[] = []
+        querySnapshot.forEach((doc) => {
+          const data = doc.data()
+          donationsData.push({
+            id: doc.id,
+            amount: data.amount || 0,
+            name: data.name || "",
+            email: data.email || "",
+            address: data.address || "",
+            city: data.city || "",
+            state: data.state || "",
+            zip_code: data.zip_code || "",
+            payment_method: data.payment_method || "credit_card",
+            status: data.status || "completed",
+            created_at: data.created_at?.toDate?.()?.toISOString() || new Date().toISOString(),
+          })
+        })
 
-        setDonations(data || [])
+        setDonations(donationsData)
         setLoading(false)
       } catch (err) {
         console.error("Error fetching donations:", err)

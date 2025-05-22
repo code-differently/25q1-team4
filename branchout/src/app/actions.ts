@@ -1,6 +1,8 @@
 "use server"
 
 import { z } from "zod"
+import { getFirestore, Timestamp, collection, addDoc } from "firebase/firestore"
+import { initializeApp, getApps } from "firebase/app"
 
 // Define the donation schema
 const DonationSchema = z.object({
@@ -36,6 +38,23 @@ export type DonationFormState = {
   message?: string
 }
 
+// Firebase config (move to environment variables in production)
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+}
+
+// Initialize Firebase only once
+if (!getApps().length) {
+  initializeApp(firebaseConfig)
+}
+
+const db = getFirestore()
+
 export async function submitDonation(prevState: DonationFormState, formData: FormData): Promise<DonationFormState> {
   // Simulate a delay to show loading state
   await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -66,18 +85,9 @@ export async function submitDonation(prevState: DonationFormState, formData: For
 
     const { amount, name, email, address, city, state, zipCode } = validatedFields.data
 
-    // In a real app, you would process the payment here
-    // For this demo, we'll just store the donation in Firebase
-
+    // Save to Firebase Firestore
     try {
-      // Use a more reliable approach for server-side operations
-      // Option 1: Use the Supabase integration instead of Firebase
-      // This is a good alternative since we have Supabase credentials available
-      const { createClient } = await import("@supabase/supabase-js")
-
-      const supabase = createClient(process.env.SUPABASE_URL || "", process.env.SUPABASE_SERVICE_ROLE_KEY || "")
-
-      const { error } = await supabase.from("donations").insert({
+      await addDoc(collection(db, "donations"), {
         amount: Number(amount),
         name,
         email,
@@ -87,12 +97,10 @@ export async function submitDonation(prevState: DonationFormState, formData: For
         zip_code: zipCode,
         payment_method: "credit_card",
         status: "completed",
-        created_at: new Date().toISOString(),
+        created_at: Timestamp.now(),
       })
 
-      if (error) throw error
-
-      console.log("Donation saved to Supabase")
+      console.log("Donation saved to Firestore")
     } catch (dbError) {
       console.error("Database error:", dbError)
       return {

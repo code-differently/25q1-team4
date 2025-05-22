@@ -1,5 +1,5 @@
+ /* eslint-disable */
 "use server"
-
 import { z } from "zod"
 import { getFirestore, Timestamp, collection, addDoc } from "firebase/firestore"
 import { initializeApp, getApps } from "firebase/app"
