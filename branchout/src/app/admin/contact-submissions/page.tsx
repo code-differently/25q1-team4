@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { collection, getDocs, query, orderBy } from "firebase/firestore"
-import { getFirestore_ } from "@/app/lib/firebase"
+import { db } from "@/src/firebase/firebase"
 
 interface ContactSubmission {
   id: string
@@ -21,7 +21,6 @@ export default function ContactSubmissionsPage() {
   useEffect(() => {
     async function fetchSubmissions() {
       try {
-        const db = getFirestore_()
         if (!db) {
           throw new Error("Firestore is not initialized. Check your environment variables.")
         }
@@ -31,9 +30,14 @@ export default function ContactSubmissionsPage() {
 
         const submissionsData: ContactSubmission[] = []
         querySnapshot.forEach((doc) => {
+          const data = doc.data()
           submissionsData.push({
             id: doc.id,
-            ...(doc.data() as Omit<ContactSubmission, "id">),
+            first_name: data.first_name || "",
+            last_name: data.last_name || "",
+            email: data.email || "",
+            message: data.message || "",
+            created_at: data.created_at?.toDate?.()?.toISOString() || new Date().toISOString(),
           })
         })
 

@@ -6,6 +6,7 @@ import { Leaf, MapPin, CalendarIcon, Upload, Plus } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 // Include MapComponent directly instead of importing it
 const MapComponent = ({ onLocationSelect }: { onLocationSelect: (location: string) => void }) => {
@@ -503,10 +504,12 @@ export default function PlantForm() {
             >
               {selectedImage ? (
                 <div className="relative h-48 w-full overflow-hidden rounded-md">
-                  <img
-                    src={selectedImage || "/placeholder.svg"}
+                  <Image
+                     src={selectedImage || "/placeholder.svg"}
                     alt="Selected tree"
-                    className="h-full w-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <Button
                     type="button"

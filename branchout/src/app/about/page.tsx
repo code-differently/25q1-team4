@@ -15,7 +15,7 @@ export default function AboutPage() {
           </p>
 
           <p className="text-gray-700 mb-8">
-            Our vision is to combine sustainability with technology in a way that's simple, impactful, and accessible to
+            Our vision is to combine sustainability with technology in a way that&apos;s simple, impactful, and accessible to
             everyone. By recording tree species, planting dates, and eventually GPS locations, we aim to foster greater
             awareness and accountability in reforestation efforts.
           </p>
@@ -24,7 +24,7 @@ export default function AboutPage() {
 
           <p className="mb-8">
             Our mission is to help individuals visualize their contribution to reforestation and inspire consistent
-            environmental action. Technology, when used thoughtfully, can help us protect the planet — and we're
+            environmental action. Technology, when used thoughtfully, can help us protect the planet — and we&apos;re
             starting here.
           </p>
 
@@ -35,8 +35,8 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
 
           <p className="whitespace-pre-line mb-8">
-            We're a group of four developers passionate about solving real-world problems with clean, purposeful code.
-            This is our first major team project, and we're excited to share it with you.
+            We&apos;re a group of four developers passionate about solving real-world problems with clean, purposeful code.
+            This is our first major team project, and we&apos;re excited to share it with you.
             <span className="font-semibold block mt-4">branchout@gmail.com</span>
           </p>
 

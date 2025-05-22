@@ -72,6 +72,7 @@ export default function DonatePage() {
 
   // Handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmitting(true)
   }
 
@@ -108,7 +109,7 @@ export default function DonatePage() {
             <div className="bg-white p-8 rounded-lg shadow-md">
               <div className="mb-6">
                 <p className="mb-6">
-                  BranchOut is more than a student project. It's a mission-driven platform designed to empower
+                  BranchOut is more than a student project. It&apos;s a mission-driven platform designed to empower
                   volunteers and communities to track their reforestation efforts and see the long-term impact of their
                   work. Every line of code, every tree planted, and every contribution supports a greener future.
                 </p>
@@ -121,12 +122,12 @@ export default function DonatePage() {
                   <li>Support future development by helping our team scale the app beyond the bootcamp.</li>
                 </ul>
                 <p className="mb-6">
-                  Whether it's a one-time gift or recurring support, every bit helps us stay rooted and reach further.
+                  Whether it&apos;s a one-time gift or recurring support, every bit helps us stay rooted and reach further.
                 </p>
 
                 <h2 className="text-2xl font-bold mb-4">Transparency & Accountability</h2>
                 <p className="mb-6">
-                  As developers committed to open-source values and social responsibility, we're dedicated to being
+                  As developers committed to open-source values and social responsibility, we&apos;re dedicated to being
                   transparent about how donations are used.
                 </p>
                 <p>
@@ -431,8 +432,8 @@ export default function DonatePage() {
 
           <div className="bg-white p-8 rounded-lg shadow-md text-center">
             <blockquote className="italic text-xl mb-4">
-              "It's the little things citizens do. That's what will make the difference. My little thing is planting
-              trees."
+              &quot;It&apos;s the little things citizens do. That&apos;s what will make the difference. My little thing is planting
+              trees.&quot;
             </blockquote>
             <p className="font-semibold">— Wangari Maathai</p>
           </div>

@@ -9,7 +9,6 @@ import { JSX, useState } from "react";
 export default function ProfilePage(): JSX.Element {
   const [username, setUsername] = useState("FlowerPower");
   const [isEditing, setIsEditing] = useState(false);
-  const [profileImage, setProfileImage] = useState<string | null>(null);
  
   return (
     <div className="p-6">

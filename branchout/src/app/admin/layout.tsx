@@ -1,10 +1,9 @@
 "use client"
 
 import type React from "react"
-
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { getAuth_ } from "@/app/lib/firebase"
+import { auth } from "@/src/firebase/firebase"
 import { onAuthStateChanged } from "firebase/auth"
 
 export default function AdminLayout({
@@ -17,7 +16,6 @@ export default function AdminLayout({
   const router = useRouter()
 
   useEffect(() => {
-    const auth = getAuth_()
     if (!auth) {
       console.error("Firebase Auth is not initialized. Check your environment variables.")
       router.push("/login")
