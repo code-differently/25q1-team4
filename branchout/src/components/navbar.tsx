@@ -18,13 +18,13 @@ export default function Navbar() {
         </Link>
         
         <nav className="hidden md:flex items-center gap-6 justify-evenly flex-1">
-          <Link href="#" className="text-sm font-medium hover:text-green-600 transition-colors">
+          <Link href="/donate" className="text-sm font-medium hover:text-green-600 transition-colors">
             Donate
           </Link>
           <Link href="/about" className="text-sm font-medium hover:text-green-600 transition-colors">
             About
           </Link>
-          <Link href="#" className="text-sm font-medium hover:text-green-600 transition-colors">
+          <Link href="/plant-tree" className="text-sm font-medium hover:text-green-600 transition-colors">
             Map
           </Link>
         </nav>
