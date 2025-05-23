@@ -13,8 +13,8 @@ export default function DonatePage() {
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [state, formAction] = useActionState(submitDonation, 0 as DonationFormState)
   const formRef = useRef<HTMLFormElement>(null)
-  const [error, setError] = useState<string | null>(null)
-  const [formState, setFormState] = useState<DonationFormState>({
+  const [, setError] = useState<string | null>(null)
+  const [formState,] = useState<DonationFormState>({
     success: false,
     message: "",
     errors: {}
