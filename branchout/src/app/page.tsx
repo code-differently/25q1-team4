@@ -66,16 +66,7 @@ export default function Home() {
                       }}
                     >
                       {/* Map features - rivers, paths */}
-                      <svg width="100%" height="100%" className="absolute inset-0">
-                        <path d="M10,50 Q30,40 50,60 T90,50" stroke="#e0f2fe" strokeWidth="8" fill="none" />
-                        <path
-                          d="M20,20 L40,30 L60,25 L80,40"
-                          stroke="#d4d4d8"
-                          strokeWidth="2"
-                          strokeDasharray="4 2"
-                          fill="none"
-                        />
-                      </svg>
+                    <img src="TreeMap.png" />
                     </div>
 
                     {/* Tree markers */}
