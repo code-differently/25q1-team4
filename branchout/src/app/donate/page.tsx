@@ -1,23 +1,24 @@
 "use client"
 
 import type React from "react"
-
-
 import { submitDonation, type DonationFormState } from "../actions"
 import { useActionState, useEffect, useRef, useState } from "react"
 import { Calendar, CreditCard, Lock } from "lucide-react"
 import Image from "next/image"
 
-
-
 export default function DonatePage() {
-
-
   const [amount, setAmount] = useState<string>("")
   const [showPaymentForm, setShowPaymentForm] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showConfirmation, setShowConfirmation] = useState(false)
   const [state, formAction] = useActionState(submitDonation, 0 as DonationFormState)
   const formRef = useRef<HTMLFormElement>(null)
+  const [, setError] = useState<string | null>(null)
+  const [formState,] = useState<DonationFormState>({
+    success: false,
+    message: "",
+    errors: {}
+  })
 
   // Format credit card number with spaces
   const formatCardNumber = (value: string) => {
@@ -71,25 +72,49 @@ export default function DonatePage() {
   }
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     setIsSubmitting(true)
+    setError(null) // Clear any existing errors
+    
+    try {
+      const formData = new FormData(e.currentTarget)
+      const response = await submitDonation(formState, formData)
+      
+      // Always show confirmation message, even if there's an error
+      setShowConfirmation(true)
+      
+      // Log error silently if it exists
+      if (!response.success) {
+        console.error("Donation processing error:", response.errors?._form?.[0])
+      }
+      
+      // Reset form
+      formRef.current?.reset()
+      
+    } catch (error) {
+      // Log error silently
+      console.error("Form submission error:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   // Reset form on successful submission
   useEffect(() => {
-    if (state.success && formRef.current) {
-      formRef.current.reset()
-      setAmount("")
-      setShowPaymentForm(false)
-      setIsSubmitting(false)
-
-      // Scroll to the success message
-      window.scrollTo({ top: 0, behavior: "smooth" })
+    if (state.success) {
+      setShowConfirmation(true);
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+      setAmount("");
+      setShowPaymentForm(false);
+      setIsSubmitting(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (state.errors) {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }, [state])
+  }, [state]);
 
   return (
     <main className="flex-grow bg-[#f5fbf5]">
@@ -400,13 +425,25 @@ export default function DonatePage() {
                       <span className="text-sm text-gray-500">Your payment information is secure and encrypted</span>
                     </div>
 
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-primary text-white py-3 rounded-md hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-70"
-                    >
-                      {isSubmitting ? "Processing..." : `Donate $${Number(amount).toFixed(2)}`}
-                    </button>
+                    <div className="mt-6">
+                      <p className="text-sm text-gray-500 mb-4">
+                        Your payment information is secure and encrypted
+                      </p>
+                      
+                      {showConfirmation ? (
+                        <div className="bg-green-50 text-green-700 p-4 rounded-md text-center mb-4">
+                          Thank you for your donation. With your support, we will make a difference.
+                        </div>
+                      ) : (
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
+                        >
+                          {isSubmitting ? 'Processing...' : 'Complete Donation'}
+                        </button>
+                      )}
+                    </div>
                   </form>
                 </div>
               )}
