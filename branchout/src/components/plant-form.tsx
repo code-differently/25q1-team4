@@ -296,6 +296,7 @@ export default function PlantForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [showCalendar, setShowCalendar] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -374,9 +375,10 @@ export default function PlantForm() {
         setSelectedLocation(null)
         setDate(new Date())
         setSelectedImage(null)
+        setSubmitted(true)
 
         // Redirect to a success page or the map
-        router.push("/map")
+        router.push("/profile")
       } else {
         throw new Error(data.message || "Something went wrong")
       }
@@ -406,6 +408,11 @@ export default function PlantForm() {
             <p>{error}</p>
           </div>
         )}
+          {submitted && (
+            <div className="mb-6 rounded-md bg-green-50 p-4 text-green-700 text-center font-semibold">
+              Thank you for planting a tree! Redirecting...
+            </div>
+          )}
 
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="grid gap-6 md:grid-cols-2">
@@ -543,19 +550,37 @@ export default function PlantForm() {
           <div className="pt-4">
             <Button
               type="submit"
-              className="w-full rounded-full bg-green-600 py-6 text-base font-medium hover:bg-green-700 text-white"
+              className="w-full bg-green-600 text-white hover:bg-green-700"
               disabled={isSubmitting}
-            >
-              {isSubmitting ? (
-                "Processing..."
-              ) : (
-                <>
-                  <Plus className="mr-2 h-5 w-5" />
-                  Plant Tree
-                </>
-              )}
-            </Button>
+  >
+            {isSubmitting ? (<>
+              <svg
+            className="mr-2 h-5 w-5 animate-spin text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24">
+            <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+            />
+            <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            />
+            </svg>
+              Submitting... </>) : (<>
+          <Plus className="mr-2 h-4 w-4" />
+            Plant Tree
+          </>
+          )}
+          </Button>
           </div>
+
         </form>
       </div>
     </div>
