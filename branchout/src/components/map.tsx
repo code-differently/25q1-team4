@@ -1,6 +1,7 @@
 import { Plus, Minus, TreesIcon as Tree } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 export default function TreeFinder() {
   return (
@@ -80,44 +81,32 @@ export default function TreeFinder() {
           </div>
         </div>
 
-        <div className="hidden md:block flex-1 relative">
-          <div className="absolute inset-0">
-            <Image
-              src="/placeholder.svg?height=533&width=800"
-              alt="Map"
-              className="h-full w-full object-cover"
-              width={1200}
-              height={800}
-            />
-            <div className="absolute top-4 right-4 flex flex-col gap-2">
-              <button className="bg-white rounded-md p-1 shadow-md">
-                <Plus className="h-5 w-5" />
-              </button>
-              <button className="bg-white rounded-md p-1 shadow-md">
-                <Minus className="h-5 w-5" />
-              </button>
-            </div>
-            {/* Map markers */}
-            <div className="absolute top-1/3 left-1/4">
-              <div className="bg-green-600 rounded-full h-8 w-8 flex items-center justify-center text-white text-xs">
-                US
-              </div>
-            </div>
-            <div className="absolute top-1/2 left-2/3">
-              <div className="bg-green-600 rounded-full h-8 w-8 flex items-center justify-center text-white text-xs">
-                US
-              </div>
-            </div>
-            <div className="absolute bottom-1/4 right-1/4">
-              <div className="bg-green-600 rounded-full h-8 w-8 flex items-center justify-center text-white text-xs">
-                US
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  )
+    }
+}
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+
+const containerStyle = {
+  width: '100%',
+  height: '500px'
+};
+
+const center = {
+  lat: 39.7392, // Example: Wilmington, DE
+  lng: -75.5398
+};
+
+export default function TreeMap() {
+  return (
+    <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={12}
+      >
+        <Marker position={center} />
+      </GoogleMap>
+    </LoadScript>
+  );
 }
 
 interface LocationCardProps {
