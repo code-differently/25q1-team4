@@ -24,7 +24,9 @@ export default function Navbar() {
           <Link href="/about" className="text-sm font-medium hover:text-green-600 transition-colors">
             About
           </Link>
-          <Link href="/plant-tree" className="text-sm font-medium hover:text-green-600 transition-colors">
+
+          <Link href="/map" className="text-sm font-medium hover:text-green-600 transition-colors">
+
             Map
           </Link>
         </nav>
