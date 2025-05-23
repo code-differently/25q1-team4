@@ -22,7 +22,7 @@ const locations = [
     trees: ["Oak", "Maple", "Sycamore"],
     rating: 4.7,
     distance: "1.2 miles",
-    image: "/placeholder.svg?height=200&width=300",
+    
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const locations = [
     trees: ["Pine", "Birch", "Cherry"],
     rating: 4.9,
     distance: "2.5 miles",
-    image: "/placeholder.svg?height=200&width=300",
+    
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ const locations = [
     trees: ["Dogwood", "Redbud", "Serviceberry"],
     rating: 4.2,
     distance: "0.8 miles",
-    image: "/placeholder.svg?height=200&width=300",
+    
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ const locations = [
     trees: ["Oak", "Hickory", "Walnut"],
     rating: 4.5,
     distance: "3.7 miles",
-    image: "/placeholder.svg?height=200&width=300",
+    
   },
   {
     id: 5,
@@ -70,7 +70,7 @@ const locations = [
     trees: ["Willow", "River Birch", "Bald Cypress"],
     rating: 4.8,
     distance: "5.2 miles",
-    image: "/placeholder.svg?height=200&width=300",
+    
   },
   {
     id: 6,
@@ -82,7 +82,7 @@ const locations = [
     trees: ["Pine", "Oak", "Maple"],
     rating: 4.6,
     distance: "4.1 miles",
-    image: "/placeholder.svg?height=200&width=300",
+    
   },
   {
     id: 7,
@@ -94,7 +94,6 @@ const locations = [
     trees: ["Maple", "Oak", "Elm"],
     rating: 4.4,
     distance: "2.8 miles",
-    image: "/placeholder.svg?height=200&width=300",
   },
 ]
 
@@ -106,7 +105,6 @@ const LocationCard = ({
   trees,
   rating,
   distance,
-  image,
   isSelected,
   onClick,
 }: {
@@ -116,7 +114,6 @@ const LocationCard = ({
   trees: string[]
   rating: number
   distance: string
-  image: string
   isSelected: boolean
   onClick: () => void
 }) => (
@@ -128,7 +125,6 @@ const LocationCard = ({
   >
     <div className="flex flex-col h-full">
       <div className="relative h-40 mb-3 overflow-hidden rounded-md">
-        <img src={image || "/placeholder.svg"} alt={name} className="object-cover w-full h-full" />
         <div className="absolute top-2 right-2 bg-white rounded-full px-2 py-1 text-xs font-medium flex items-center">
           <Star className="w-3 h-3 text-yellow-500 mr-1 fill-yellow-500" />
           {rating}
@@ -210,7 +206,6 @@ export default function MapPage() {
                 trees={loc.trees}
                 rating={loc.rating}
                 distance={loc.distance}
-                image={loc.image}
                 isSelected={selectedLocation === loc.id}
                 onClick={() => handleLocationSelect(loc.id)}
               />
@@ -288,7 +283,7 @@ export default function MapPage() {
             Selected Location: {locations.find((loc) => loc.id === selectedLocation)?.name}
           </h2>
           <p className="text-green-700 mb-4">
-            You've selected{" "}
+            You have selected{" "}
             <span className="font-semibold">{locations.find((loc) => loc.id === selectedLocation)?.name}</span> as your
             tree planting location. This area is perfect for planting{" "}
             {locations.find((loc) => loc.id === selectedLocation)?.trees.join(", ")} trees.
