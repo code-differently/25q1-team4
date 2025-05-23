@@ -293,7 +293,7 @@ export default function MapPage() {
               className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
               onClick={() => {
                 // In a real app, this would navigate to the plant form with the selected location
-                window.location.href = `/plant?location=${encodeURIComponent(
+                window.location.href = `/plant-tree?location=${encodeURIComponent(
                   locations.find((loc) => loc.id === selectedLocation)?.name || "",
                 )}`
               }}
